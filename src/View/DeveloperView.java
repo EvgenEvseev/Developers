@@ -25,22 +25,20 @@ public class DeveloperView {
 
         while(true) {
             System.out.println("Введите зарпалту");
-            Scanner scs=new Scanner(System.in);
-            if (scs.hasNextInt()) {
-                sal = scs.nextInt();
+            if (scan.hasNextInt()) {
+                sal = scan.nextInt();
                 break;
             } else System.out.println("Некоректный ввод данных, введите число ");
-            continue;
+            scan.next();
         }
 
         while(true) {
             System.out.println("Введите ID");
-            Scanner sci=new Scanner(System.in);
-            if(sci.hasNextLong()){
-                i = sci.nextLong();
+            if(scan.hasNextLong()){
+                i = scan.nextLong();
                 break;
             }else System.out.println("Некоректный ввод данных, введите число");
-           continue;
+           scan.next();
         }
 
         Developer devscan = new Developer(i, name, prof, sal);
@@ -71,25 +69,29 @@ public class DeveloperView {
                     case 1:
                         devscan();
                         continue;
-                    case 2:
-                        while (true){
-                            System.out.println("Удаление работника, введите ID");
-                            Scanner sc = new Scanner(System.in);
-                            if(sc.hasNextLong()){
-                             long id=sc.nextLong();
-                             Dao.remove(id);
-                                System.out.println("Работник с ID "+id+" удален.");
-                             break;
-                            }else System.out.println("Неверный тип данных ");
-                                continue;
-                        }
-                        break;
 
+                    case 2:
+                        for(;;){
+                            System.out.println("Удаление работника введите ID ");
+                            if(scan.hasNextLong()){
+                                long id= scan.nextLong();
+                                Dao.remove(id);
+                                System.out.println("Работник с ID "+id+" удален.");
+                                break;
+                            }else System.out.println("Неверный тип данных");
+                            scan.next();
+                        }
+                            break;
                     case 3:
                         System.out.println("Для получения информация о сотруднике введите его ID ");
-                        if(scan.hasNextLong()){
-                        long IDget = scan.nextLong();
-                        Dao.getByID(IDget);}
+                        for(;;){
+                            if(scan.hasNextLong()){
+                                long ID = scan.nextLong();
+                                Dao.getByID(ID);
+                                break;
+                            }else System.out.println("Неверный тип данных, введите число");
+                            scan.next();
+                         }
                         break;
 
                     case 4:
