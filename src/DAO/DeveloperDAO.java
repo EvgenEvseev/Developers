@@ -75,7 +75,6 @@ public class DeveloperDAO {
                 String sal0=line.split(",")[3];
                 int sal=Integer.valueOf(sal0.substring(1,sal0.length()-2));
                 dev = new Developer(IDi,name,prof,sal);
-                break;
             }
         } catch (IOException e) {
         }

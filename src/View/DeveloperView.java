@@ -68,7 +68,7 @@ public class DeveloperView {
 
                     case 1:
                         devscan();
-                        continue;
+                        break;
 
                     case 2:
                         for(;;){
