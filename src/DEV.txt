@@ -1,2 +1,0 @@
-21, german, worker, 55555 /
-1, Dyfra, financer, 5500000 /
