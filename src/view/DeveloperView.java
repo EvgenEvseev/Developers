@@ -1,21 +1,19 @@
-package View;
+package view;
 
 
-import DAO.DeveloperDAO;
-import Model.Developer;
+import dao.DeveloperDAO;
+import model.Developer;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 public class DeveloperView {
-    void devscan(){
+    private void devscan(){
         DeveloperDAO Dao=new DeveloperDAO();
         Scanner scan = new Scanner(System.in);
-        String name = null;
-        String prof = null;
-        int sal = 0;
-        long i = 0;
-        String info;
+        String name;
+        String prof;
+        int sal;
+        long i;
         System.out.println("Введите имя ");
         name = scan.nextLine();
 
@@ -40,11 +38,8 @@ public class DeveloperView {
             }else System.out.println("Некоректный ввод данных, введите число");
            scan.next();
         }
-
         Developer devscan = new Developer(i, name, prof, sal);
         Dao.safe(devscan);
-        System.out.println("Работник добавлен");
-
     }
 
     public void start() {
@@ -76,7 +71,6 @@ public class DeveloperView {
                             if(scan.hasNextLong()){
                                 long id= scan.nextLong();
                                 Dao.remove(id);
-                                System.out.println("Работник с ID "+id+" удален.");
                                 break;
                             }else System.out.println("Неверный тип данных");
                             scan.next();
@@ -95,7 +89,6 @@ public class DeveloperView {
                         break;
 
                     case 4:
-                        System.out.println("Информация получена: ");
                         Dao.getAll();
                         break;
 
