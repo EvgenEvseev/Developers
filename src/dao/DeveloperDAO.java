@@ -88,7 +88,6 @@ public class DeveloperDAO {
         ArrayList<Developer> AL = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
             String line;
-            System.out.println("Сотрудники по списку: ");
             while ((line = br.readLine()) != null) {
                 System.out.println(line);
                 long ID = Long.valueOf(line.split(",")[0]);

@@ -2,28 +2,29 @@ package controller;
 
 import dao.DeveloperDAO;
 import model.Developer;
-import view.DeveloperView;
 
 import java.util.ArrayList;
 
 public class Controller {
-    public static void main(String[] args) {
         DeveloperDAO dao=new DeveloperDAO();
 
-        //запуск по методам
+        public void ConSave(Developer developer){
+                 dao.safe(developer);
+        }
 
-        Developer Teodor = new Developer(21,"Teodor","TeamLeader",120000);
-        dao.safe(Teodor);
+        public void ConSafe(long id,String name,String profession,int salary){
+                dao.safe(id,name,profession,salary);
+        }
 
-        dao.safe(20,"George","Junior Java",40000);
+        public void ConRemove(long id){
+                dao.remove(id);
+        }
 
-        dao.getAll();
+        public Developer ConGetByID(long id){
+                return dao.getByID(id);
+        }
 
-        Developer George=dao.getByID(20);
-
-
-        //запуск консольного типа
-        DeveloperView vi = new DeveloperView();
-        vi.start();
-    }
+        public ArrayList<Developer> ConGetAll(){
+               return dao.getAll();
+        }
 }
